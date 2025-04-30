@@ -20,9 +20,21 @@ function Criar(){
         const item = document.createElement('li')
         item.appendChild(check)
         item.appendChild(label)
+
+
+        const botaox = document.createElement('button')
+        botaox.textContent = "x"
+        botaox.className = "remover tarefa"
+        botaox.addEventListener('click', function(event){
+            event.stopPropagation()
+            item.remove()
+        })
+        
+        item.appendChild(botaox)
         
         lista.appendChild(item)
         texto.value = ''
+        
     
             check.addEventListener('change', function(){
                 if(check.checked){
@@ -40,19 +52,7 @@ function Criar(){
      
 
 
-adicionar.addEventListener('click',Criar)
-
-function Remover(){
-    const remover = document.querySelectorAll('#lista input[type="checkbox"]');
-    remover.forEach(element => {
-        element.addEventListener('click',function(event){
-            const no_pai = event.target.closest('li')
-            no_pai.remove()
-        })
-    });
-}
-
-remover.addEventListener('mousedown',Remover)
+adicionar.addEventListener('click',Criar,)
 
 
 
