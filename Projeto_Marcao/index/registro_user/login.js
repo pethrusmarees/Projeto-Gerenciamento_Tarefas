@@ -26,7 +26,7 @@ const firebaseConfig = {
       signInWithEmailAndPassword(auth,valor_email,valor_senha)
       .then((userCredential) => {
           const user = userCredential.user
-          window.open("/index/index.html", "_self");
+          window.open("../index.html", "_self");
       })
       .catch((error) => {
         const errorMessage = error.message
