@@ -31,7 +31,8 @@ const firebaseConfig = {
             window.open("login.html", "_self")          
          })
          .catch((error) => {
-         const errorMessage = error.message;           
+         const errorMessage = error.message;
+         alert("Erro ao criar usuário: " + errorMessage);
             console.error("Erro ao criar usuário:",errorMessage);
          });
 

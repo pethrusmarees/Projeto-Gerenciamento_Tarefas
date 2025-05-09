@@ -21,11 +21,16 @@ const firebaseConfig = {
     let botao = document.getElementById("botao");
 
     botao.addEventListener("click", () => {
+      if(email.value == "" || senha.value == "") {
+        alert("Preencha todos os campos")
+        return
+      }
       let valor_email  = email.value
       let valor_senha = senha.value
       signInWithEmailAndPassword(auth,valor_email,valor_senha)
       .then((userCredential) => {
           const user = userCredential.user
+          alert("Login realizado com sucesso")
           window.open("../index.html", "_self");
       })
       .catch((error) => {
