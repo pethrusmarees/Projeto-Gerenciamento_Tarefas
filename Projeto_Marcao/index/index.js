@@ -21,9 +21,28 @@ function Criar(){
         item.appendChild(check)
         item.appendChild(label)
 
+        const botao_editar = document.createElement('img')
+        botao_editar.src = 'mdi--pencil.png'
+        botao_editar.style.width = '17px'
+        botao_editar.style.cursor = 'pointer'
+        botao_editar.style.paddingLeft = '2px'
+        botao_editar.style.paddingTop = '5px'
+        botao_editar.className = "remover tarefa"
+        botao_editar.addEventListener('click', (event) => {
+            event.stopPropagation()
+           const editar =  prompt('coloque uma palara');
+           label.textContent = editar
 
-        const botaox = document.createElement('button')
-        botaox.textContent = "x"
+        })
+
+        item.appendChild(botao_editar)
+
+        const botaox = document.createElement('img')
+        botaox.src = 'mdi--trash.png'
+        botaox.style.width = '17px'
+        botaox.style.paddingLeft = '10px'
+        botaox.style.paddingTop = '5px'
+        botaox.style.cursor = 'pointer'
         botaox.className = "remover tarefa"
         botaox.addEventListener('click', function(event){
             event.stopPropagation()
@@ -31,6 +50,7 @@ function Criar(){
         })
         
         item.appendChild(botaox)
+        console.log(label.length)
         
         lista.appendChild(item)
         texto.value = ''
@@ -39,7 +59,8 @@ function Criar(){
             check.addEventListener('change', function(){
                 if(check.checked){
                     
-                    item.style.color = "green"
+                    item.style.color = "gray"
+                    item.style.textDecoration = 'line-through'
                      
                 }
                 else{
@@ -47,12 +68,20 @@ function Criar(){
                 }
             })
         }
-
      }    
-     
 
-
+    remover.addEventListener('click', (event) => {
+        event.stopPropagation()
+        lista.innerHTML = ''
+    })
 adicionar.addEventListener('click',Criar,)
+
+
+addEventListener('keydown',(event) => {
+    if(event.key  === 'Enter'){
+        Criar()
+    }
+})
 
 
 

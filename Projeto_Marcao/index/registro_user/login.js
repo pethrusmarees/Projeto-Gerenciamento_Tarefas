@@ -35,7 +35,16 @@ const firebaseConfig = {
       })
       .catch((error) => {
         const errorMessage = error.message
-        console.log(errorMessage) 
-        alert("Email ou senha incorretos")
+        const erroCode = error.code;
+        if(erroCode     === "auth/invalid-credential"){
+          alert('Email não existente')
+        }
+        else if( errorMessage === "auth/wrong-password" ){
+          alert('senha incorreta')
+        }
+
+        else{
+          alert('Erro ao fazer login')
+        }
       })
     })

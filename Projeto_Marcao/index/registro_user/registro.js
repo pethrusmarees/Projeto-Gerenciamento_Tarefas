@@ -21,22 +21,31 @@ const firebaseConfig = {
     let botao = document.getElementById("botao");
 
 
-  botao.addEventListener("click", () => {
-        let emailValue = email.value;
-        let senhaValue = senha.value;
-        createUserWithEmailAndPassword(auth, emailValue, senhaValue)
-        .then((userCredential) => {
-            const user = userCredential.user
-            alert("Usuário criado com sucesso! +" + user.email + user.senha);
-            window.open("login.html", "_self")          
-         })
-         .catch((error) => {
-         const errorMessage = error.message;
-         alert("Erro ao criar usuário: " + errorMessage);
-            console.error("Erro ao criar usuário:",errorMessage);
-         });
+function criarUsuario() {
+    let emailValue = email.value;
+    let senhaValue = senha.value;
 
-})
+    createUserWithEmailAndPassword(auth, emailValue, senhaValue)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            alert("Usuário criado com sucesso! " + user.email);
+            window.open("login.html", "_self");
+        })
+        .catch((error) => {
+            const errorMessage = error.message;
+            alert("Erro ao criar usuário: " + errorMessage);
+        });
+}
+
+
+botao.addEventListener("click", criarUsuario);
+
+addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        criarUsuario();
+    }
+});
+
 
 
 
