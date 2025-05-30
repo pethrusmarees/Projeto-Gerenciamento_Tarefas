@@ -162,6 +162,7 @@ a:hover{
 img{
         height: 400px;
         position: absolute;
+        border-radius: 30px;
         top: 50%; /* Centraliza verticalmente */
         left: 70%; /* Centraliza horizontalmente */
         transform: translate(-50%, -50%); /* Ajusta o ponto de referência para o centro da imagem */

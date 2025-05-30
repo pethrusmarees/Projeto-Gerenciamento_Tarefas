@@ -20,31 +20,42 @@ const firebaseConfig = {
     let senha = document.getElementById("senha");
     let botao = document.getElementById("botao");
 
-    botao.addEventListener("click", () => {
-      if(email.value == "" || senha.value == "") {
-        alert("Preencha todos os campos")
-        return
-      }
-      let valor_email  = email.value
-      let valor_senha = senha.value
-      signInWithEmailAndPassword(auth,valor_email,valor_senha)
-      .then((userCredential) => {
-          const user = userCredential.user
-          alert("Login realizado com sucesso")
-          window.open("../index.html", "_self");
-      })
-      .catch((error) => {
-        const errorMessage = error.message
-        const erroCode = error.code;
-        if(erroCode     === "auth/invalid-credential"){
-          alert('Email não existente')
-        }
-        else if( errorMessage === "auth/wrong-password" ){
-          alert('senha incorreta')
-        }
+    
 
-        else{
-          alert('Erro ao fazer login')
-        }
-      })
+   function LoginUsuario(){
+    if(email.value == "" || senha.value == "") {
+      alert("Preencha todos os campos")
+      return
+    }
+    let valor_email  = email.value
+    let valor_senha = senha.value
+    signInWithEmailAndPassword(auth,valor_email,valor_senha)
+    .then((userCredential) => {
+        const user = userCredential.user
+        alert("Login realizado com sucesso")
+        window.open("../index.html", "_self");
     })
+    .catch((error) => {
+      const errorMessage = error.message
+      const erroCode = error.code;
+      if(erroCode     === "auth/invalid-credential"){
+        alert('Email não existente')
+      }
+      else if( errorMessage === "auth/wrong-password" ){
+        alert('senha incorreta')
+      }
+
+      else{
+        alert('Erro ao fazer login')
+      }
+    })
+   }
+
+   botao.addEventListener("click", LoginUsuario);
+
+   document.addEventListener('keydown', (event) => {
+    if(event.key === 'Enter'){
+      LoginUsuario()
+    }
+   });
+
