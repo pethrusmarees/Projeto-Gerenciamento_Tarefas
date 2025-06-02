@@ -30,7 +30,7 @@ function Criar(){
         botao_editar.className = "remover tarefa"
         botao_editar.addEventListener('click', (event) => {
             event.stopPropagation()
-           const editar =  prompt('coloque uma palara');
+           const editar =  prompt('editar tarefa: ');
            label.textContent = editar
 
         })
@@ -64,7 +64,8 @@ function Criar(){
                      
                 }
                 else{
-                    item.style.color = 'black'
+                    item.style.color = 'white'
+                    item.style.textDecoration = 'none'
                 }
             })
         }
